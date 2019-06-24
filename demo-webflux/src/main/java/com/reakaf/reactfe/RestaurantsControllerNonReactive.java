@@ -18,15 +18,21 @@ public class RestaurantsControllerNonReactive {
         try {
             System.out.println("Thread " + Thread.currentThread().getId() + ", mapping id: ");
             Thread.sleep(1L);
+
             System.out.println("Thread " + Thread.currentThread().getId() + ", justing to c");
             Thread.sleep(1);
+
             System.out.println("Thread " + Thread.currentThread().getId() + ", extracing sync method");
             HashMap<String, String> etxractMap = BlockingMethod();
+
             System.out.println("Thread " + Thread.currentThread().getId() + ", Extracting the Id from the HashMap");
             String id = etxractMap.get("ID");
+
             System.out.println("Thread " + Thread.currentThread().getId() + ", getting detail: " + id);
+
             restaurant1 = getDetail(id).block();
             System.out.println("Thread " + Thread.currentThread().getId() + ", getting menu: " + id);
+
             Restaurant menu = getMenu(id, "4f47711f-2ed8-43b4-9e43-747744d1aaee").block();
             Thread.sleep(1);
         } catch (Exception ex) {
